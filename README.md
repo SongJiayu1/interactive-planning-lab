@@ -10,7 +10,7 @@ This repo is a **showcase**, not a third copy of the algorithms — short GIFs, 
 
 Intersection **Level-1 game + MCTS** for unprotected left turns: ego negotiates yield / gap / continue against oncoming traffic (and sometimes pedestrians), then emits a coarse trajectory + semantic tags for downstream optimization.
 
-Closed-loop demos below use **receding-horizon replanning** (re-run MCTS each sim step, ~20 s).
+Closed-loop demos below use **receding-horizon replanning** (re-run MCTS each sim step, ~20 s). In these sims, **obstacle vehicles drive at constant speed and do not play a game** — only ego runs PairMCTS; opponents are open-loop constant-velocity agents.
 
 ### Scenario 4 — unprotected left vs one oncoming straight
 
@@ -36,7 +36,7 @@ Closed-loop demos below use **receding-horizon replanning** (re-run MCTS each si
 | **Method** | Pairwise Level-1 games inside MCTS → Boltzmann cost → rollout → backprop; closed-loop replan |
 | **Demo** | 20 s receding-horizon sims (scenarios 1–4) |
 | **Output** | Semantic tags (yield / overtake / …) + coarse ego trajectory |
-| **Limitations** | Python research demo; kinematic opponents; not production / Orin / real perception |
+| **Limitations** | Python research demo; opponents are CV (no game); not production / Orin / real perception |
 | **Source** | PairMCTS (formerly `ks_decision`) — public link TBD |
 
 ---
