@@ -4,6 +4,18 @@ Visual demos of interactive decision-making (MCTS) and trajectory optimization (
 
 This repo is a **showcase**, not a third copy of the algorithms — short GIFs, short tech cards, links to source.
 
+## Contents
+
+- [InteractMCTS — lane-change vertical slice](#interactmcts--lane-change-vertical-slice)
+  - [Casebook (C1–C10)](#casebook-definitions-c1c10)
+  - [Closed-loop demos](#closed-loop-demos)
+- [InteractMCTS — unprotected left turn (ULT)](#interactmcts--unprotected-left-turn-ult)
+  - [Casebook (L1–L8)](#casebook-definitions-l1l8)
+  - [Closed-loop demos](#closed-loop-demos-u6--u7)
+- [PairMCTS](#pairmcts)
+- [Coming next](#coming-next)
+- [Layout](#layout)
+
 ---
 
 ## InteractMCTS — lane-change vertical slice
