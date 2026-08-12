@@ -80,7 +80,71 @@ Default setup: dual-lane road, left lane change, Frenet planning on a reference 
 | **Limitations** | Python research demo; simplified opponent models; not production / Orin / real perception |
 | **Source** | Private research repo `InteractMCTS` — demos published here |
 
-> Unprotected left-turn plugin for InteractMCTS is **not** shown here yet. PairMCTS below covers intersection Level-1 demos separately.
+---
+
+## InteractMCTS — unprotected left turn (ULT)
+
+**Semantic MCTS for unprotected left:** conflict-zone geometry → opposing **time** gaps + sticky gap* → `WAIT` / `CREEP` / `GO` → GO hard gate (VRU stub + keep∧block) → closed-loop U7 (replan every 0.5 s).
+
+Default setup: PairMCTS-style 4-way cross; ego left-turn ref × opposing southbound; fixed intersection camera. Output: rolling 0.5 s decisions under perfect control over ~20 s.
+
+### Casebook definitions (L1–L8)
+
+| Case | Name | Setup / intent | Expected behavior |
+|------|------|----------------|-------------------|
+| **L1** | Comfortable time gap | Sparse / slow oncoming | **GO** and clear the conflict zone |
+| **L2** | Opposing arrives first | Oncoming already occupies CZ | **Yield** (WAIT/CREEP) until clear |
+| **L3** | Opposing already cleared | Oncoming past \(s_{\mathrm{exit}}\) | **GO** with little wait |
+| **L4** | Narrow time gap | Mid-gap just above margin | Boundary / observational |
+| **L5** | Sticky mid-gap | Two oncoming cars; mid seam scores best | Locks sticky `opp_1__opp_2` at t=0 (select gap; may not thread) |
+| **L6** | Creep to observe | Same blocking opp as L2; ego farther from STOP | Prefer **CREEP**, stay out of CZ while occupied |
+| **L7** | Opposing rushes gap | Comfortable gap at t=0; opp accelerates once ego commits | Delayed commit, then finish left turn |
+| **L8** | Thread mid gap | Wide legal mid-gap between opp_1 and opp_2 | **GO through** the seam (opp_1 cleared, opp_2 not yet in) |
+
+### Closed-loop demos (U6 / U7)
+
+#### L1 — comfortable time gap (GO)
+
+![L1](assets/InteractMCTS_ult/L1_closed_loop.gif)
+
+#### L2 — opposing arrives first (yield)
+
+![L2](assets/InteractMCTS_ult/L2_closed_loop.gif)
+
+#### L3 — opposing already cleared (GO)
+
+![L3](assets/InteractMCTS_ult/L3_closed_loop.gif)
+
+#### L4 — narrow time gap
+
+![L4](assets/InteractMCTS_ult/L4_closed_loop.gif)
+
+#### L5 — sticky mid-gap selection
+
+![L5](assets/InteractMCTS_ult/L5_closed_loop.gif)
+
+#### L6 — creep to observe
+
+![L6](assets/InteractMCTS_ult/L6_closed_loop.gif)
+
+#### L7 — opposing rushes the gap
+
+![L7](assets/InteractMCTS_ult/L7_closed_loop.gif)
+
+#### L8 — thread between opp_1 and opp_2
+
+![L8](assets/InteractMCTS_ult/L8_closed_loop.gif)
+
+### Tech card
+
+| | |
+|---|---|
+| **Problem** | Unprotected left vs oncoming traffic (time-gap acceptance / creep / go) |
+| **Method** | Ref-line conflict disk + sticky time gap* + WAIT/CREEP/GO MCTS + keep∧block hard gate; closed-loop U7 |
+| **Demo** | Casebook L1–L8 closed-loop GIFs (~20 s, `dt = 0.5 s`) |
+| **Output** | Per-cycle macro + sticky gap* + executed coarse trajectory |
+| **Limitations** | Python research demo; scripted / hooked opponents; VRU is a stub; not production / Orin / real perception |
+| **Source** | Private research repo `InteractMCTS` — demos published here |
 
 ---
 
@@ -124,7 +188,6 @@ Closed-loop demos below use **receding-horizon replanning** (re-run MCTS each si
 | Project | Status |
 |---------|--------|
 | **myiLQR** — DDP / iLQR trajectory optimization | Planned |
-| **InteractMCTS unprotected left turn** | Later (lane-change slice is shown above) |
 
 ---
 
@@ -136,6 +199,8 @@ interactive-planning-lab/
 └── assets/
     ├── InteractMCTS_lane_change/
     │   ├── C1_closed_loop.gif … C10_closed_loop.gif
+    ├── InteractMCTS_ult/
+    │   ├── L1_closed_loop.gif … L8_closed_loop.gif
     └── pairmcts/
         ├── scenario_1_sim_20s_replan.gif
         ├── scenario_2_sim_20s_replan.gif
