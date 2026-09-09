@@ -15,6 +15,7 @@ This repo is a **showcase**, not a third copy of the algorithms — short GIFs, 
 - [PairMCTS](#pairmcts)
 - [Hybrid A* — perpendicular parking](#hybrid-a--perpendicular-parking)
 - [Hybrid A* — ROS / RViz parking (ROSParking)](#hybrid-a--ros--rviz-parking-rosparking)
+- [DDP / iLQR — trajectory optimization](#ddp--ilqr--trajectory-optimization)
 - [Coming next](#coming-next)
 - [Layout](#layout)
 
@@ -243,11 +244,29 @@ Final path:
 
 ---
 
+## DDP / iLQR — trajectory optimization
+
+**Constrained iLQR / DDP** on a bicycle model: iterate a trajectory around obstacles while keeping tracking and smoothness costs. Demo recorded from [`myiLQR`](https://github.com/SongJiayu1/myiLQR).
+
+[Watch the demo (mp4)](assets/ddp/ddp_ilqr.mp4)
+
+<video src="assets/ddp/ddp_ilqr.mp4" controls width="800"></video>
+
+### Tech card
+
+| | |
+|---|---|
+| **Problem** | Short-horizon trajectory optimization with obstacles (not combinatorial search) |
+| **Method** | DDP / CILQR; proximity cache; bicycle model |
+| **Demo** | ~24 s screen recording |
+| **Limitations** | Research demo; not production / Orin-timed as shown here |
+| **Source** | [SongJiayu1/myiLQR](https://github.com/SongJiayu1/myiLQR) |
+
+---
+
 ## Coming next
 
-| Project | Status |
-|---------|--------|
-| **myiLQR** — DDP / iLQR trajectory optimization | Planned |
+Nothing queued. New demos land here as GIFs or short mp4s, not as a third copy of the solver.
 
 ---
 
@@ -271,4 +290,6 @@ interactive-planning-lab/
     │   └── parking_result.png
     └── ros_parking/
         └── hybrid_a_star_ros_noetic.mp4
+    └── ddp/
+        └── ddp_ilqr.mp4
 ```
