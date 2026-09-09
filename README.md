@@ -1,6 +1,6 @@
 # interactive-planning-lab
 
-Visual demos of interactive decision-making (MCTS) and trajectory optimization (iLQR) for autonomous driving.
+Visual demos of interactive decision-making (MCTS), geometric search (Hybrid A*), and trajectory optimization (iLQR) for autonomous driving.
 
 This repo is a **showcase**, not a third copy of the algorithms — short GIFs, short tech cards, links to source.
 
@@ -13,6 +13,8 @@ This repo is a **showcase**, not a third copy of the algorithms — short GIFs, 
   - [Casebook (L1–L8)](#casebook-definitions-l1l8)
   - [Closed-loop demos](#closed-loop-demos-u6--u7)
 - [PairMCTS](#pairmcts)
+- [Hybrid A* — perpendicular parking](#hybrid-a--perpendicular-parking)
+- [Hybrid A* — ROS / RViz parking (ROSParking)](#hybrid-a--ros--rviz-parking-rosparking)
 - [Coming next](#coming-next)
 - [Layout](#layout)
 
@@ -195,6 +197,52 @@ Closed-loop demos below use **receding-horizon replanning** (re-run MCTS each si
 
 ---
 
+## Hybrid A* — perpendicular parking
+
+**Kinematic search for perpendicular parking:** state is rear-axle `(x, y, θ)`; motion primitives go forward and reverse; Reeds-Shepp analytic expansion when close; SAT collision on the vehicle polygon; gradient-descent smoother with re-check.
+
+Same family as Nav2 **SmacPlannerHybrid** and Autoware open-space parking — not a lane-level planner.
+
+![Hybrid A* parking](assets/hybrid_a_star/parking_demo.gif)
+
+Final path:
+
+![Hybrid A* result](assets/hybrid_a_star/parking_result.png)
+
+### Tech card
+
+| | |
+|---|---|
+| **Problem** | Perpendicular bay parking with parked cars on both sides; goal is a pose, not a point |
+| **Method** | Hybrid A* on a 0.5 m / 15° grid + Reeds-Shepp CSC + SAT OBB + curvature smoother |
+| **Demo** | Search tree → raw path → drive-in GIF; static result PNG |
+| **Output** | Collision-free `(x, y, θ)` path the bicycle model can follow |
+| **Limitations** | Python demo; Ackermann (max steer 35°), not a ±90° forklift steer; no live lidar costmap |
+| **Source** | Local repo `hybrid_a_star_avp_demo` (not copied here) |
+
+---
+
+## Hybrid A* — ROS / RViz parking (ROSParking)
+
+**ROS Noetic** Hybrid A* parking stack in RViz: search a collision-free pose, then smooth. Same kinematic family as the Python bay-parking demo above; this is the Gazebo/RViz visualization recorded from [`ROSParking`](https://github.com/SongJiayu1/ROSParking).
+
+[Watch the demo (mp4)](assets/ros_parking/hybrid_a_star_ros_noetic.mp4)
+
+<video src="assets/ros_parking/hybrid_a_star_ros_noetic.mp4" controls width="800"></video>
+
+### Tech card
+
+| | |
+|---|---|
+| **Problem** | Parking / open-space pose planning with Hybrid A* in ROS |
+| **Method** | `my_hybrid_astar`: 3D node search + Reeds-Shepp coarse path + spiral / FEM smoothers |
+| **Demo** | ~36 s RViz screen recording (also in this folder as mp4) |
+| **Stack** | ROS Noetic · `my_hybrid_astar` · `my_load_map` · `my_show_markers` |
+| **Limitations** | Research / pre-study; not a production AVP stack |
+| **Source** | [SongJiayu1/ROSParking](https://github.com/SongJiayu1/ROSParking) |
+
+---
+
 ## Coming next
 
 | Project | Status |
@@ -213,9 +261,14 @@ interactive-planning-lab/
     │   ├── C1_closed_loop.gif … C10_closed_loop.gif
     ├── InteractMCTS_ult/
     │   ├── L1_closed_loop.gif … L8_closed_loop.gif
-    └── pairmcts/
-        ├── scenario_1_sim_20s_replan.gif
-        ├── scenario_2_sim_20s_replan.gif
-        ├── scenario_3_sim_20s_replan.gif
-        └── scenario_4_sim_20s_replan.gif
+    ├── pairmcts/
+    │   ├── scenario_1_sim_20s_replan.gif
+    │   ├── scenario_2_sim_20s_replan.gif
+    │   ├── scenario_3_sim_20s_replan.gif
+    │   └── scenario_4_sim_20s_replan.gif
+    ├── hybrid_a_star/
+    │   ├── parking_demo.gif
+    │   └── parking_result.png
+    └── ros_parking/
+        └── hybrid_a_star_ros_noetic.mp4
 ```

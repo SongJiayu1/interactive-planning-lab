@@ -3,3 +3,6 @@
 
 # Obsidian
 .obsidian/
+
+# Keep compressed mp4 in git; skip raw screen recordings
+assets/ros_parking/*.mov
