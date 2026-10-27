@@ -1,0 +1,463 @@
+{
+  "schema": 1,
+  "seed": 0,
+  "iterations_per_replan": 20,
+  "sim_duration_s": 20.0,
+  "source_sha256": "493df3131be5ab83d88a24ed7f814ec43e139aefae763d0be370cad7f108fbbd",
+  "coordinate_units": "meters; speed m/s; time seconds",
+  "config": {
+    "dt": 0.5,
+    "dt_predict": 0.1,
+    "horizon": 8.0,
+    "predict_horizon": 8.0,
+    "sim_duration": 20.0,
+    "ttc_threshold": 5.0,
+    "interaction_angle": 135.0,
+    "cost_threshold": 200.0,
+    "boltzmann_temp": 5.0,
+    "egoism_factor": 0.3,
+    "delta_threshold": 15.0,
+    "ref_weight": 5.0,
+    "row_violation_weight": 400.0,
+    "row_compliance_bonus": 15.0,
+    "row_unreasonable_yield": 60.0,
+    "row_late_overtake_penalty": 150.0,
+    "row_time_margin": 0.3,
+    "safety_distance": 3.0,
+    "d_safe": 3.0,
+    "n_iterations": 20,
+    "ucb_c": 1.41,
+    "vehicle_length": 3.0,
+    "vehicle_width": 2.0,
+    "wheelbase": 3.0,
+    "idm_v0": 8.0,
+    "idm_T": 1.5,
+    "idm_s0": 2.0,
+    "idm_a_max": 2.0,
+    "idm_b_max": 3.0,
+    "idm_delta": 4,
+    "idm_lane_l_threshold": 2.0,
+    "road_extent": 20.0,
+    "lane_width": 3.0,
+    "lane_boundary_margin": 0.5,
+    "intersection_half": 6.0
+  },
+  "cases": [
+    {
+      "case_id": 1,
+      "name": "Crossing left-turner",
+      "purpose_and_limit": "Shows a real yield/overtake branch and UCB visit allocation; synthetic equal-priority encounter.",
+      "sim_duration_s": 20.0,
+      "replan_dt_s": 0.5,
+      "frames": 41,
+      "initial_tree_nodes": 3,
+      "initial_branching_nodes": 1,
+      "initial_max_depth": 1,
+      "initial_raw_path": [
+        {
+          "opponent": "car1",
+          "decision": "yield"
+        }
+      ],
+      "safety_status_counts": {
+        "fallback_brake": 3,
+        "validated": 38
+      },
+      "executed_ego_overlap_count_01s": 0,
+      "executed_ego_overlaps": [],
+      "scripted_non_ego_overlap_count_01s": 0,
+      "scripted_non_ego_overlap_examples": [],
+      "non_ego_boundary_overlap_count_01s": 0,
+      "non_ego_interior_overlap_count_01s": 0,
+      "boundary_diagnostic": "overlap with at least one center in outer 3m display band; finite reference endpoints hold CV actors",
+      "minimum_sampled_center_distance_m": 9.077658909258677,
+      "exit_observed": true,
+      "first_exit_sample_s": 10.0,
+      "planned_reference_end_clamps": 8,
+      "opponent_execution": "independent CV along reference; no game response executed",
+      "semantic_labels": "raw quadrant-based labels, not a certified crossing order",
+      "validation_limit": "0.1s interpolated samples, demo vehicle boxes, no continuous proof",
+      "gifs": {
+        "scenario_1_sim_20s_replan.gif": {
+          "frames": 41,
+          "width": 1440,
+          "height": 810,
+          "bytes": 2154699,
+          "sha256": "63d6eef817eb27e620af50dc28effcd77fbf28ddf9c3e73c73d88bdf4e08804f"
+        },
+        "scenario_1_search.gif": {
+          "frames": 44,
+          "width": 1440,
+          "height": 810,
+          "bytes": 1918382,
+          "sha256": "21b60d2a76df9f42e71659c70847499e9fe9e7df2a24d1cf151329b76f0e81de",
+          "recorded_search_steps": 80,
+          "exported_steps": 44
+        }
+      }
+    },
+    {
+      "case_id": 2,
+      "name": "Multi-actor stress test",
+      "purpose_and_limit": "Shows sequential pair expansion and full-plan safety overrides; diagonal point-mass pedestrian is not a zebra-crossing model.",
+      "sim_duration_s": 20.0,
+      "replan_dt_s": 0.5,
+      "frames": 41,
+      "initial_tree_nodes": 5,
+      "initial_branching_nodes": 1,
+      "initial_max_depth": 3,
+      "initial_raw_path": [
+        {
+          "opponent": "car1",
+          "decision": "yield"
+        },
+        {
+          "opponent": "car2",
+          "decision": "yield"
+        },
+        {
+          "opponent": "ped",
+          "decision": "yield"
+        }
+      ],
+      "safety_status_counts": {
+        "fallback_brake": 7,
+        "validated": 34
+      },
+      "executed_ego_overlap_count_01s": 0,
+      "executed_ego_overlaps": [],
+      "scripted_non_ego_overlap_count_01s": 26,
+      "scripted_non_ego_overlap_examples": [
+        [
+          3.9,
+          "car2",
+          "ped"
+        ],
+        [
+          4.0,
+          "car2",
+          "ped"
+        ],
+        [
+          4.1,
+          "car2",
+          "ped"
+        ],
+        [
+          4.2,
+          "car2",
+          "ped"
+        ],
+        [
+          4.3,
+          "car2",
+          "ped"
+        ],
+        [
+          4.4,
+          "car2",
+          "ped"
+        ],
+        [
+          4.5,
+          "car2",
+          "ped"
+        ],
+        [
+          4.6,
+          "car2",
+          "ped"
+        ]
+      ],
+      "non_ego_boundary_overlap_count_01s": 0,
+      "non_ego_interior_overlap_count_01s": 26,
+      "boundary_diagnostic": "overlap with at least one center in outer 3m display band; finite reference endpoints hold CV actors",
+      "minimum_sampled_center_distance_m": 2.796478851216744,
+      "exit_observed": true,
+      "first_exit_sample_s": 15.0,
+      "planned_reference_end_clamps": 22,
+      "opponent_execution": "independent CV along reference; no game response executed",
+      "semantic_labels": "raw quadrant-based labels, not a certified crossing order",
+      "validation_limit": "0.1s interpolated samples, demo vehicle boxes, no continuous proof",
+      "gifs": {
+        "scenario_2_sim_20s_replan.gif": {
+          "frames": 41,
+          "width": 1440,
+          "height": 810,
+          "bytes": 2433230,
+          "sha256": "d253cd0acf4d8c635ad37f14b477c1d2881dcd5e413f17eca5ba9a01f2343a71"
+        },
+        "scenario_2_search.gif": {
+          "frames": 44,
+          "width": 1440,
+          "height": 810,
+          "bytes": 2003931,
+          "sha256": "b5d798acb18d7483393017aca9f37651d745637fd69fa520a31dde7765a01366",
+          "recorded_search_steps": 80,
+          "exported_steps": 44
+        }
+      }
+    },
+    {
+      "case_id": 3,
+      "name": "Two oncoming vehicles",
+      "purpose_and_limit": "Tests a gap opportunity; threading must be measured, not inferred from the scene name or raw tags.",
+      "sim_duration_s": 20.0,
+      "replan_dt_s": 0.5,
+      "frames": 41,
+      "initial_tree_nodes": 3,
+      "initial_branching_nodes": 0,
+      "initial_max_depth": 2,
+      "initial_raw_path": [
+        {
+          "opponent": "oncoming_lead",
+          "decision": "yield"
+        },
+        {
+          "opponent": "oncoming_follow",
+          "decision": "yield"
+        }
+      ],
+      "safety_status_counts": {
+        "validated": 28,
+        "fallback_brake": 13
+      },
+      "executed_ego_overlap_count_01s": 0,
+      "executed_ego_overlaps": [],
+      "scripted_non_ego_overlap_count_01s": 57,
+      "scripted_non_ego_overlap_examples": [
+        [
+          14.3,
+          "oncoming_lead",
+          "oncoming_follow"
+        ],
+        [
+          14.4,
+          "oncoming_lead",
+          "oncoming_follow"
+        ],
+        [
+          14.5,
+          "oncoming_lead",
+          "oncoming_follow"
+        ],
+        [
+          14.6,
+          "oncoming_lead",
+          "oncoming_follow"
+        ],
+        [
+          14.7,
+          "oncoming_lead",
+          "oncoming_follow"
+        ],
+        [
+          14.8,
+          "oncoming_lead",
+          "oncoming_follow"
+        ],
+        [
+          14.9,
+          "oncoming_lead",
+          "oncoming_follow"
+        ],
+        [
+          15.0,
+          "oncoming_lead",
+          "oncoming_follow"
+        ]
+      ],
+      "non_ego_boundary_overlap_count_01s": 57,
+      "non_ego_interior_overlap_count_01s": 0,
+      "boundary_diagnostic": "overlap with at least one center in outer 3m display band; finite reference endpoints hold CV actors",
+      "minimum_sampled_center_distance_m": 2.80263266481404,
+      "exit_observed": true,
+      "first_exit_sample_s": 12.5,
+      "planned_reference_end_clamps": 0,
+      "opponent_execution": "independent CV along reference; no game response executed",
+      "semantic_labels": "raw quadrant-based labels, not a certified crossing order",
+      "validation_limit": "0.1s interpolated samples, demo vehicle boxes, no continuous proof",
+      "gap_observation": {
+        "criterion": "ego center occupancy wholly between lead exit and follow entry",
+        "center_xy_m": [
+          -1.5,
+          0.0
+        ],
+        "radius_m": 3.0,
+        "sample_dt_s": 0.5,
+        "ego_interval_s": [
+          8.5,
+          10.5
+        ],
+        "lead_interval_s": [
+          0.0,
+          0.5
+        ],
+        "follow_interval_s": [
+          7.0,
+          9.0
+        ],
+        "gap_threaded": false
+      },
+      "gifs": {
+        "scenario_3_sim_20s_replan.gif": {
+          "frames": 41,
+          "width": 1440,
+          "height": 810,
+          "bytes": 2343264,
+          "sha256": "7d1e95c181acc38cc6b5b5dd1dff29a8df24e13b2d393ff518568ac0aeb424eb"
+        },
+        "scenario_3_search.gif": {
+          "frames": 44,
+          "width": 1440,
+          "height": 810,
+          "bytes": 2056916,
+          "sha256": "8773ce04539a628bd07e9b2cbcafb6f4f05f4623d49e7246d56a6ed26e9fae32",
+          "recorded_search_steps": 80,
+          "exported_steps": 44
+        }
+      }
+    },
+    {
+      "case_id": 4,
+      "name": "Single oncoming vehicle",
+      "purpose_and_limit": "Cleanest wait/restart and independent-CV validation example; initial tree is heavily pruned.",
+      "sim_duration_s": 20.0,
+      "replan_dt_s": 0.5,
+      "frames": 41,
+      "initial_tree_nodes": 2,
+      "initial_branching_nodes": 0,
+      "initial_max_depth": 1,
+      "initial_raw_path": [
+        {
+          "opponent": "oncoming",
+          "decision": "yield"
+        }
+      ],
+      "safety_status_counts": {
+        "validated": 41
+      },
+      "executed_ego_overlap_count_01s": 0,
+      "executed_ego_overlaps": [],
+      "scripted_non_ego_overlap_count_01s": 0,
+      "scripted_non_ego_overlap_examples": [],
+      "non_ego_boundary_overlap_count_01s": 0,
+      "non_ego_interior_overlap_count_01s": 0,
+      "boundary_diagnostic": "overlap with at least one center in outer 3m display band; finite reference endpoints hold CV actors",
+      "minimum_sampled_center_distance_m": 3.010398644698074,
+      "exit_observed": true,
+      "first_exit_sample_s": 10.5,
+      "planned_reference_end_clamps": 20,
+      "opponent_execution": "independent CV along reference; no game response executed",
+      "semantic_labels": "raw quadrant-based labels, not a certified crossing order",
+      "validation_limit": "0.1s interpolated samples, demo vehicle boxes, no continuous proof",
+      "gifs": {
+        "scenario_4_sim_20s_replan.gif": {
+          "frames": 41,
+          "width": 1440,
+          "height": 810,
+          "bytes": 2207655,
+          "sha256": "74eef288eac614a3baf2d655cbb41860a5290c5616af1e288a95586d69e761a9"
+        },
+        "scenario_4_search.gif": {
+          "frames": 44,
+          "width": 1440,
+          "height": 810,
+          "bytes": 1814381,
+          "sha256": "8d8a024ebe003709f70c7460a904f181e32c02810d9414571e0ec8588748785a",
+          "recorded_search_steps": 80,
+          "exported_steps": 44
+        }
+      }
+    }
+  ],
+  "generation_seconds": 60.717111458000005,
+  "timing_scope": "includes rendering and encoding; not planner latency",
+  "tests": {
+    "count": 110,
+    "passed": true,
+    "report_sha256": "007c4d390db42f0b91bd9a27a6c599649f7a3f43b0266868120331ab4fb28ea1"
+  },
+  "media_validation": [
+    {
+      "file": "scenario_1_sim_20s_replan.gif",
+      "frames": 41,
+      "size_px": [
+        1440,
+        810
+      ],
+      "duration_ms": 22500,
+      "bytes": 2154699
+    },
+    {
+      "file": "scenario_1_search.gif",
+      "frames": 44,
+      "size_px": [
+        1440,
+        810
+      ],
+      "duration_ms": 28300,
+      "bytes": 1918382
+    },
+    {
+      "file": "scenario_2_sim_20s_replan.gif",
+      "frames": 41,
+      "size_px": [
+        1440,
+        810
+      ],
+      "duration_ms": 22500,
+      "bytes": 2433230
+    },
+    {
+      "file": "scenario_2_search.gif",
+      "frames": 44,
+      "size_px": [
+        1440,
+        810
+      ],
+      "duration_ms": 28300,
+      "bytes": 2003931
+    },
+    {
+      "file": "scenario_3_sim_20s_replan.gif",
+      "frames": 41,
+      "size_px": [
+        1440,
+        810
+      ],
+      "duration_ms": 22500,
+      "bytes": 2343264
+    },
+    {
+      "file": "scenario_3_search.gif",
+      "frames": 44,
+      "size_px": [
+        1440,
+        810
+      ],
+      "duration_ms": 28300,
+      "bytes": 2056916
+    },
+    {
+      "file": "scenario_4_sim_20s_replan.gif",
+      "frames": 41,
+      "size_px": [
+        1440,
+        810
+      ],
+      "duration_ms": 22500,
+      "bytes": 2207655
+    },
+    {
+      "file": "scenario_4_search.gif",
+      "frames": 44,
+      "size_px": [
+        1440,
+        810
+      ],
+      "duration_ms": 28300,
+      "bytes": 1814381
+    }
+  ]
+}

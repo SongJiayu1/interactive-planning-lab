@@ -165,36 +165,69 @@ Default setup: PairMCTS-style 4-way cross; ego left-turn ref × opposing southbo
 
 ## PairMCTS
 
-Intersection **Level-1 game + MCTS** for unprotected left turns: ego negotiates yield / gap / continue against oncoming traffic (and sometimes pedestrians), then emits a coarse trajectory + semantic tags for downstream optimization.
+Pairwise **Level-1 game evaluation inside MCTS** for intersection decisions. Each expansion samples ego actions, evaluates opponent actions, groups the surviving trajectories into raw yield/overtake representatives, then continues with another interaction object. A tree edge covers an interaction segment, not a fixed 0.5 s control tick.
 
-Closed-loop demos below use **receding-horizon replanning** (re-run MCTS each sim step, ~20 s). In these sims, **obstacle vehicles drive at constant speed and do not play a game** — only ego runs PairMCTS; opponents are open-loop constant-velocity agents.
+These recordings use **seed 0, 20 search iterations per replan, an 8 s planning horizon and 0.5 s replanning over 20 s**. Obstacles execute independent constant-velocity paths; the imagined game responses are not executed by other agents. The four existing scenario definitions and planning weights were retained.
 
-### Scenario 4 — unprotected left vs one oncoming straight
+The refreshed closed-loop recordings show the **current-cycle tree**, raw semantic timeline, planned versus executed speed, and final trajectory validation status. Cards show the interaction object, raw decision, plan-relative time, visits **N** and average cumulative cost **Q** (lower is better). Green is the raw search choice; safety repair can replace that trajectory. Separate search recordings show SELECT → SAMPLE → GAME → ROLLOUT → BACKPROP → FINAL, with historical visits/costs and actual candidate-filter counts.
 
-![Scenario 4](assets/pairmcts/scenario_4_sim_20s_replan.gif)
+### Start here: S4 — single oncoming vehicle
 
-### Scenario 1 — unprotected left vs crossing left-turner
+A clean example of ego deceleration, waiting/restart, and independent-prediction validation. The initial search tree has **2 nodes and no branching node** after filtering: this is useful for explaining the pipeline, not evidence of a large combinatorial search or superiority over a rule planner.
 
-![Scenario 1](assets/pairmcts/scenario_1_sim_20s_replan.gif)
+![S4 closed loop and current MCTS tree](assets/pairmcts/scenario_4_sim_20s_replan.gif)
 
-### Scenario 3 — unprotected left vs two oncoming straights (gap)
+### Explain the search: S1 — crossing left-turner
 
-![Scenario 3](assets/pairmcts/scenario_3_sim_20s_replan.gif)
+The initial tree retains **two competing raw semantic representatives**: 3 nodes and 1 branching node. The GAME panel exposes the action-pair filtering; the following frames show rollout, UCB selection and N/Q updates. Search animation time is not physical simulation time.
 
-### Scenario 2 — three left-turners + pedestrian
+![S1 search trace](assets/pairmcts/scenario_1_search.gif)
 
-![Scenario 2](assets/pairmcts/scenario_2_sim_20s_replan.gif)
+<details>
+<summary>S1 closed-loop behavior</summary>
 
-### Tech card
+![S1 closed loop](assets/pairmcts/scenario_1_sim_20s_replan.gif)
 
-| | |
-|---|---|
-| **Problem** | Unprotected left at intersection; multi-agent interaction |
-| **Method** | Pairwise Level-1 games inside MCTS → Boltzmann cost → rollout → backprop; closed-loop replan |
-| **Demo** | 20 s receding-horizon sims (scenarios 1–4) |
-| **Output** | Semantic tags (yield / overtake / …) + coarse ego trajectory |
-| **Limitations** | Python research demo; opponents are CV (no game); not production / Orin / real perception |
-| **Source** | PairMCTS (formerly `ks_decision`) — public link TBD |
+</details>
+
+<details>
+<summary>S4 single-cycle search: heavily pruned tree</summary>
+
+![S4 search trace](assets/pairmcts/scenario_4_search.gif)
+
+</details>
+
+### Diagnostic scenes: useful limits, not polished success claims
+
+<details>
+<summary>S2 — multi-actor stress test: sequential pairs and safety overrides</summary>
+
+Initial tree: **5 nodes, 1 branching node, depth 3**. This synthetic scene tests multiple interaction objects and the final safety fallback. Its diagonal point-mass pedestrian and independent scripted vehicles are not a physically coordinated traffic model. The audit detects **26 interior non-ego overlap samples at 0.1 s resolution**, even though no ego overlap was observed. Do not present it as validated pedestrian interaction or whole-scene collision freedom.
+
+![S2 diagnostic closed loop](assets/pairmcts/scenario_2_sim_20s_replan.gif)
+
+![S2 sequential search trace](assets/pairmcts/scenario_2_search.gif)
+
+</details>
+
+<details>
+<summary>S3 — two oncoming vehicles: a gap opportunity that is not threaded in this run</summary>
+
+Initial tree: **3 nodes, no branching node, depth 2**. The measured ego occupancy is not wholly between the lead vehicle clearing and the following vehicle entering the declared diagnostic disk (center `(-1.5, 0) m`, radius `3 m`). This is **not a successful middle-gap demonstration**. Late pile-up of the scripted oncoming vehicles occurs at the finite reference endpoint; the audit reports boundary-band overlaps separately from interior traffic conflicts.
+
+![S3 diagnostic closed loop](assets/pairmcts/scenario_3_sim_20s_replan.gif)
+
+![S3 single-chain search trace](assets/pairmcts/scenario_3_search.gif)
+
+</details>
+
+### What the recordings establish
+
+All four runs reached the declared exit sample, and no ego overlap was found on **0.1 s interpolated executed-motion samples** using the demo geometry. The fresh regression suite also passed; exact results, configuration, source digest and media hashes are in the [manifest](assets/pairmcts/manifest.json) and [asset index](assets/pairmcts/README.md).
+
+The experiments demonstrate the search/validation pipeline, branch allocation in S1, sequential interaction processing in S2, and explicit failure/repair diagnostics. They do **not** establish a performance gain over Europa or rule planning: there is no matched baseline, closed-loop responsive opponent model, uncertainty sweep or planning-latency benchmark here. Raw quadrant-based labels may disagree with geometric passage order; `RAW OVERTAKE` is not a certified “ego passes first” result. Reference-end speed clamps remain a known comfort artifact; collision checks do not certify dynamics or comfort.
+
+Source remains in the research `PairMCTS` project. Only presentation assets and measured metadata are copied here.
 
 ---
 
@@ -284,7 +317,9 @@ interactive-planning-lab/
     │   ├── scenario_1_sim_20s_replan.gif
     │   ├── scenario_2_sim_20s_replan.gif
     │   ├── scenario_3_sim_20s_replan.gif
-    │   └── scenario_4_sim_20s_replan.gif
+    │   ├── scenario_4_sim_20s_replan.gif
+    │   ├── scenario_1_search.gif … scenario_4_search.gif
+    │   └── manifest.json / README.md / *.png
     ├── hybrid_a_star/
     │   ├── parking_demo.gif
     │   └── parking_result.png
