@@ -1,0 +1,40 @@
+{
+  "case_id": 5,
+  "name": "Left turn across two eastbound vehicles",
+  "purpose_and_limit": "Ego south-to-west left turn crosses consecutive west-to-east traffic; gap use is not guaranteed.",
+  "sim_duration_s": 20.0,
+  "replan_dt_s": 0.5,
+  "frames": 41,
+  "initial_tree_nodes": 3,
+  "initial_branching_nodes": 0,
+  "initial_max_depth": 2,
+  "initial_raw_path": [
+    {
+      "opponent": "cross_lead",
+      "decision": "yield"
+    },
+    {
+      "opponent": "cross_follow",
+      "decision": "yield"
+    }
+  ],
+  "safety_status_counts": {
+    "fallback_brake": 6,
+    "validated": 35
+  },
+  "executed_ego_overlap_count_01s": 0,
+  "executed_ego_overlaps": [],
+  "scripted_non_ego_overlap_count_01s": 0,
+  "scripted_non_ego_overlap_examples": [],
+  "non_ego_boundary_overlap_count_01s": 0,
+  "non_ego_interior_overlap_count_01s": 0,
+  "boundary_diagnostic": "overlap with at least one center in outer 3m display band; finite reference endpoints hold CV actors",
+  "minimum_sampled_center_distance_m": 3.013933315684868,
+  "exit_observed": true,
+  "exit_criterion": "ego center x <= -15m",
+  "first_exit_sample_s": 9.0,
+  "planned_reference_end_clamps": 13,
+  "opponent_execution": "independent CV along reference; no game response executed",
+  "semantic_labels": "raw quadrant-based labels, not a certified crossing order",
+  "validation_limit": "0.1s interpolated samples, demo vehicle boxes, no continuous proof"
+}

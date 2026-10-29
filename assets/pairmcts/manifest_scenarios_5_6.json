@@ -1,0 +1,208 @@
+{
+  "schema": 1,
+  "seed": 0,
+  "iterations_per_replan": 20,
+  "sim_duration_s": 20.0,
+  "source_sha256": "72f03f889b3e28e9125093896f6a11b794319e1ca2419078509cf27fbf4b708a",
+  "coordinate_units": "meters; speed m/s; time seconds",
+  "config": {
+    "dt": 0.5,
+    "dt_predict": 0.1,
+    "horizon": 8.0,
+    "predict_horizon": 8.0,
+    "sim_duration": 20.0,
+    "ttc_threshold": 5.0,
+    "interaction_angle": 135.0,
+    "cost_threshold": 200.0,
+    "boltzmann_temp": 5.0,
+    "egoism_factor": 0.3,
+    "delta_threshold": 15.0,
+    "ref_weight": 5.0,
+    "row_violation_weight": 400.0,
+    "row_compliance_bonus": 15.0,
+    "row_unreasonable_yield": 60.0,
+    "row_late_overtake_penalty": 150.0,
+    "row_time_margin": 0.3,
+    "safety_distance": 3.0,
+    "d_safe": 3.0,
+    "n_iterations": 20,
+    "ucb_c": 1.41,
+    "vehicle_length": 3.0,
+    "vehicle_width": 2.0,
+    "wheelbase": 3.0,
+    "idm_v0": 8.0,
+    "idm_T": 1.5,
+    "idm_s0": 2.0,
+    "idm_a_max": 2.0,
+    "idm_b_max": 3.0,
+    "idm_delta": 4,
+    "idm_lane_l_threshold": 2.0,
+    "road_extent": 20.0,
+    "lane_width": 3.0,
+    "lane_boundary_margin": 0.5,
+    "intersection_half": 6.0
+  },
+  "cases": [
+    {
+      "case_id": 5,
+      "name": "Left turn across two eastbound vehicles",
+      "purpose_and_limit": "Ego south-to-west left turn crosses consecutive west-to-east traffic; gap use is not guaranteed.",
+      "sim_duration_s": 20.0,
+      "replan_dt_s": 0.5,
+      "frames": 41,
+      "initial_tree_nodes": 3,
+      "initial_branching_nodes": 0,
+      "initial_max_depth": 2,
+      "initial_raw_path": [
+        {
+          "opponent": "cross_lead",
+          "decision": "yield"
+        },
+        {
+          "opponent": "cross_follow",
+          "decision": "yield"
+        }
+      ],
+      "safety_status_counts": {
+        "fallback_brake": 6,
+        "validated": 35
+      },
+      "executed_ego_overlap_count_01s": 0,
+      "executed_ego_overlaps": [],
+      "scripted_non_ego_overlap_count_01s": 0,
+      "scripted_non_ego_overlap_examples": [],
+      "non_ego_boundary_overlap_count_01s": 0,
+      "non_ego_interior_overlap_count_01s": 0,
+      "boundary_diagnostic": "overlap with at least one center in outer 3m display band; finite reference endpoints hold CV actors",
+      "minimum_sampled_center_distance_m": 3.013933315684868,
+      "exit_observed": true,
+      "exit_criterion": "ego center x <= -15m",
+      "first_exit_sample_s": 9.0,
+      "planned_reference_end_clamps": 13,
+      "opponent_execution": "independent CV along reference; no game response executed",
+      "semantic_labels": "raw quadrant-based labels, not a certified crossing order",
+      "validation_limit": "0.1s interpolated samples, demo vehicle boxes, no continuous proof",
+      "gifs": {
+        "scenario_5_sim_20s_replan.gif": {
+          "frames": 41,
+          "width": 1440,
+          "height": 810,
+          "bytes": 2253072,
+          "sha256": "299f41f85ed344bc19cbaf6863b2d99a10758825780ae08413b0208a79797b25"
+        },
+        "scenario_5_search.gif": {
+          "frames": 44,
+          "width": 1440,
+          "height": 810,
+          "bytes": 1977942,
+          "sha256": "604aaf9cfb626bb7561ab361f655e0ef8d7c1bb808aeef185b946474aa08131d",
+          "recorded_search_steps": 80,
+          "exported_steps": 44
+        }
+      }
+    },
+    {
+      "case_id": 6,
+      "name": "Right turn into eastbound traffic",
+      "purpose_and_limit": "Ego south-to-east right turn joins the same lane as two consecutive straight vehicles; merging and following must be checked.",
+      "sim_duration_s": 20.0,
+      "replan_dt_s": 0.5,
+      "frames": 41,
+      "initial_tree_nodes": 3,
+      "initial_branching_nodes": 0,
+      "initial_max_depth": 2,
+      "initial_raw_path": [
+        {
+          "opponent": "cross_lead",
+          "decision": "yield"
+        },
+        {
+          "opponent": "cross_follow",
+          "decision": "overtake"
+        }
+      ],
+      "safety_status_counts": {
+        "fallback_brake": 6,
+        "validated": 35
+      },
+      "executed_ego_overlap_count_01s": 0,
+      "executed_ego_overlaps": [],
+      "scripted_non_ego_overlap_count_01s": 0,
+      "scripted_non_ego_overlap_examples": [],
+      "non_ego_boundary_overlap_count_01s": 0,
+      "non_ego_interior_overlap_count_01s": 0,
+      "boundary_diagnostic": "overlap with at least one center in outer 3m display band; finite reference endpoints hold CV actors",
+      "minimum_sampled_center_distance_m": 3.1528002865376727,
+      "exit_observed": true,
+      "exit_criterion": "ego center x >= 15m",
+      "first_exit_sample_s": 8.5,
+      "planned_reference_end_clamps": 9,
+      "opponent_execution": "independent CV along reference; no game response executed",
+      "semantic_labels": "raw quadrant-based labels, not a certified crossing order",
+      "validation_limit": "0.1s interpolated samples, demo vehicle boxes, no continuous proof",
+      "gifs": {
+        "scenario_6_sim_20s_replan.gif": {
+          "frames": 41,
+          "width": 1440,
+          "height": 810,
+          "bytes": 2235798,
+          "sha256": "715572ca7864072c5b035ef49f9b3bb13df688678917df72a36dc3e202a51a3c"
+        },
+        "scenario_6_search.gif": {
+          "frames": 44,
+          "width": 1440,
+          "height": 810,
+          "bytes": 2017026,
+          "sha256": "20010397b7180a6c31d217e4257f701986d2350744e7c268690c53a5a088f6c4",
+          "recorded_search_steps": 80,
+          "exported_steps": 44
+        }
+      }
+    }
+  ],
+  "generation_seconds": 30.0504245,
+  "timing_scope": "includes rendering and encoding; not planner latency",
+  "media_validation": [
+    {
+      "file": "scenario_6_search.gif",
+      "sha256": "20010397b7180a6c31d217e4257f701986d2350744e7c268690c53a5a088f6c4",
+      "frames": 44,
+      "dimensions": [
+        1440,
+        810
+      ]
+    },
+    {
+      "file": "scenario_5_sim_20s_replan.gif",
+      "sha256": "299f41f85ed344bc19cbaf6863b2d99a10758825780ae08413b0208a79797b25",
+      "frames": 41,
+      "dimensions": [
+        1440,
+        810
+      ]
+    },
+    {
+      "file": "scenario_5_search.gif",
+      "sha256": "604aaf9cfb626bb7561ab361f655e0ef8d7c1bb808aeef185b946474aa08131d",
+      "frames": 44,
+      "dimensions": [
+        1440,
+        810
+      ]
+    },
+    {
+      "file": "scenario_6_sim_20s_replan.gif",
+      "sha256": "715572ca7864072c5b035ef49f9b3bb13df688678917df72a36dc3e202a51a3c",
+      "frames": 41,
+      "dimensions": [
+        1440,
+        810
+      ]
+    }
+  ],
+  "tests": {
+    "count": 116,
+    "passed": true,
+    "report": "scenario_56_test_report.txt"
+  }
+}

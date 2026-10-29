@@ -73,3 +73,33 @@ Other scripted actors overlap count: 0; interior=0, boundary-band=0.
 Full per-cycle point CSVs remain in the source PairMCTS/results/audit folder. This folder contains presentation media, posters and manifest.json; no solver copy.
 
 Fresh regression suite: 110 tests passed. All eight GIFs were fully decoded and checked against the recorded hashes.
+
+
+## New cross-traffic cases (2026-10-29)
+
+### New cross-traffic scenarios — S5 and S6
+
+Rerun with seed 0, 20 iterations per cycle and 20s of closed-loop simulation. Both horizontal vehicles travel west to east at 5m/s, initially 12m apart. The through-traffic route now extends beyond the displayed intersection, avoiding artificial parking at x=20m.
+
+**S5: ego turns left across two consecutive straight-driving vehicles.**
+
+![S5 left turn across cross traffic](scenario_5_sim_20s_replan.gif)
+
+**S6: ego turns right into the same eastbound lane as both straight-driving vehicles.**
+
+![S6 right turn into the same lane](scenario_6_sim_20s_replan.gif)
+
+<details>
+<summary>Single-cycle MCTS search traces for S5 and S6</summary>
+
+![S5 search](scenario_5_search.gif)
+
+![S6 search](scenario_6_search.gif)
+
+</details>
+
+These are scripted-traffic research demos with safety-braking overrides, not a claim of successful middle-gap acceptance or production readiness. Ego still has a finite reference endpoint; the later zero-speed clamp is not a physically optimized stopping maneuver. Fresh measurements, source/configuration digest and media hashes are in the [S5/S6 manifest](manifest_scenarios_5_6.json). The regression suite passed 116 tests.
+
+S5 measured: sampled ego overlaps=0, non-ego overlaps=0; exit observed=True, first exit sample=9.0s (ego center x <= -15m).
+
+S6 measured: sampled ego overlaps=0, non-ego overlaps=0; exit observed=True, first exit sample=8.5s (ego center x >= 15m).

@@ -1,0 +1,136 @@
+test_cache_truncation_detected (test_action_fan.TestActionFan) ... ok
+test_ego_has_nine_fans (test_action_fan.TestActionFan) ... ok
+test_crossing_ttc (test_calc_ttc.TestCalcTTC) ... ok
+test_head_on_collision_ttc (test_calc_ttc.TestCalcTTC) ... ok
+test_same_direction_no_collision (test_calc_ttc.TestCalcTTC) ... ok
+test_right_merge_completes_with_through_traffic_leaving_map (test_cross_traffic_scenarios.CrossTrafficScenesTest) ... ok
+test_right_merge_is_same_lane_not_opposite_lane (test_cross_traffic_scenarios.CrossTrafficScenesTest) ... ok
+test_right_turn_continuity_and_heading (test_cross_traffic_scenarios.CrossTrafficScenesTest) ... ok
+test_right_turn_priority_is_below_straight (test_cross_traffic_scenarios.CrossTrafficScenesTest) ... ok
+test_six_second_closed_loop_has_no_unsafe_output (test_cross_traffic_scenarios.CrossTrafficScenesTest) ... ok
+test_two_ordered_nonoverlapping_horizontal_actors (test_cross_traffic_scenarios.CrossTrafficScenesTest) ... ok
+test_extend_does_not_loop_off_reference (test_extend_with_idm.TestExtendWithIdm) ... ok
+test_extend_follows_reference_after_game_end (test_extend_with_idm.TestExtendWithIdm) ... ok
+test_extend_second_point_continuous_with_game_end (test_extend_with_idm.TestExtendWithIdm) ... ok
+test_extend_starts_from_game_end_state (test_extend_with_idm.TestExtendWithIdm) ... ok
+test_extend_stays_in_lane_corridor (test_extend_with_idm.TestExtendWithIdm) ... ok
+test_final_traj_includes_extend_segment (test_extend_with_idm.TestExtendWithIdm) ... ok
+test_idm_decelerates_for_close_leader (test_extend_with_idm.TestExtendWithIdm) ... ok
+test_planning_output_splits_ego_game_and_extend (test_extend_with_idm.TestExtendWithIdm) ... ok
+test_scenario2_ego_extend_continuous (test_extend_with_idm.TestExtendWithIdm) ... ok
+test_scenario1_finds_game_pair (test_find_game_pairs.TestFindGamePairs) ... ok
+test_scenario2_all_pairs_same_opponent (test_find_game_pairs.TestFindGamePairs) ... ok
+test_scenario3_first_opponent_is_oncoming_lead (test_find_game_pairs.TestFindGamePairs) ... ok
+test_extra_check_uses_arrival_time_not_arc_length (test_game_end_decision.TestGameEndDecision)
+Player reaches conflict region earlier in time → t_player < t_ego. ... ok
+test_overtake_sequence_4_3 (test_game_end_decision.TestGameEndDecision) ... ok
+test_yield_sequence_4_1 (test_game_end_decision.TestGameEndDecision) ... ok
+test_behind_no_interaction (test_has_interaction.TestHasInteraction) ... ok
+test_directly_ahead_interaction (test_has_interaction.TestHasInteraction) ... ok
+test_large_ttc_no_interaction (test_has_interaction.TestHasInteraction) ... ok
+test_left_rear_no_interaction (test_has_interaction.TestHasInteraction) ... ok
+test_right_rear_no_interaction (test_has_interaction.TestHasInteraction) ... ok
+test_ttc_below_threshold (test_has_interaction.TestHasInteraction) ... ok
+test_desired_gap_increases_with_speed (test_idm_model.TestIDMModel) ... ok
+test_emergency_brake_on_zero_gap (test_idm_model.TestIDMModel) ... ok
+test_following_decelerates_when_gap_small (test_idm_model.TestIDMModel) ... ok
+test_free_road_accel_at_rest_is_positive (test_idm_model.TestIDMModel) ... ok
+test_free_road_accel_at_v0_is_zero (test_idm_model.TestIDMModel) ... ok
+test_beyond_lane_margin_is_out_of_lane (test_lane_boundary.TestLaneBoundary) ... ok
+test_ego_cache_skips_out_of_lane_steps (test_lane_boundary.TestLaneBoundary) ... ok
+test_has_collision_flags_player_out_of_lane (test_lane_boundary.TestLaneBoundary) ... ok
+test_in_lane_not_out_of_lane (test_lane_boundary.TestLaneBoundary) ... ok
+test_pedestrian_without_ref_line_skipped (test_lane_boundary.TestLaneBoundary) ... ok
+test_scenario1_car1_left_turn_west_tracking (test_left_turn_tracking.TestLeftTurnTracking) ... ok
+test_scenario1_ego_left_turn_tracking (test_left_turn_tracking.TestLeftTurnTracking) ... ok
+test_mcts_records_expansion_events (test_mcts_expansion.TestMCTSExpansion) ... ok
+test_mcts_search_trace_phases_per_iteration (test_mcts_expansion.TestMCTSExpansion) ... ok
+test_kinematic_rollout_differs_from_ref_geometry_snap (test_mcts_rollout_ref.TestMCTSRolloutKinematic) ... ok
+test_rollout_first_point_matches_leaf_state (test_mcts_rollout_ref.TestMCTSRolloutKinematic) ... ok
+test_rollout_xy_stays_in_map_scenario2 (test_mcts_rollout_ref.TestMCTSRolloutKinematic) ... ok
+test_terminal_child_near_parent_scenario2 (test_mcts_rollout_ref.TestMCTSRolloutKinematic) ... ok
+test_rollout_points_match_xy_and_span_horizon (test_mcts_viz_trace.TestMCTSVizTrace) ... ok
+test_dashboard_render_keyboard_and_layer_toggles (test_planning_dashboard.TestPlanningDashboard) ... ok
+test_map_lane_markings_are_axis_aligned (test_planning_dashboard.TestPlanningDashboard) ... ok
+test_replan_view_labels_execution_separately (test_planning_dashboard.TestPlanningDashboard) ... ok
+test_search_does_not_show_nodes_before_expansion (test_planning_dashboard.TestPlanningDashboard) ... ok
+test_scenario2_stitched_traj_no_same_time_overlap (test_planning_output_collision.TestPlanningOutputCollision) ... ok
+test_scenario3_stitched_traj_no_same_time_overlap (test_planning_output_collision.TestPlanningOutputCollision) ... ok
+test_absolute_shift_preserves_decisions_and_derivatives (test_point_decisions.TestPointDecisions) ... ok
+test_differences_measure_emitted_speed_not_control (test_point_decisions.TestPointDecisions) ... ok
+test_extension_does_not_inherit_previous_opponent (test_point_decisions.TestPointDecisions) ... ok
+test_reference_end_clamp_is_flagged_without_changing_raw_points (test_point_decisions.TestPointDecisions) ... ok
+test_safety_override_is_exposed (test_point_decisions.TestPointDecisions) ... ok
+test_sample_target_is_not_falsely_labelled_yield (test_point_decisions.TestPointDecisions) ... ok
+test_shared_boundary_belongs_to_next_decision (test_point_decisions.TestPointDecisions) ... ok
+test_csv_has_one_row_per_real_sample (test_point_decisions.TestPointInspector) ... ok
+test_current_snapshot_three_seconds_exposes_clamp_and_real_history (test_point_decisions.TestPointInspector) ... ok
+test_plan_slider_and_point_keys_select_exact_raw_point (test_point_decisions.TestPointInspector) ... ok
+test_table_click_selects_matching_point (test_point_decisions.TestPointInspector) ... ok
+test_titles_do_not_overlap (test_point_decisions.TestPointInspector) ... ok
+test_predict_advances_along_reference (test_predict_traj.TestPredictTraj) ... ok
+test_predict_timestep_is_config_dt (test_predict_traj.TestPredictTraj) ... ok
+test_vehicle_predict_on_reference_centerline (test_predict_traj.TestPredictTraj) ... ok
+test_disagreements_are_the_crossing_and_heading_cases (test_quadrant_scenarios.TestQuadrantScenarios) ... ok
+test_matching_cases_keep_their_labels (test_quadrant_scenarios.TestQuadrantScenarios) ... ok
+test_later_replan_can_still_have_game_segments (test_receding_horizon.TestRecedingHorizon) ... ok
+test_no_jump_when_mcts_has_no_opponent_traj (test_receding_horizon.TestRecedingHorizon)
+After interaction ends, viz must use sim_states not stale world predict. ... ok
+test_opponents_propagate_constant_speed (test_receding_horizon.TestRecedingHorizon)
+Non-ego ground truth ignores MCTS game traj; keeps nominal speed. ... ok
+test_replan_produces_per_frame_outputs (test_receding_horizon.TestRecedingHorizon) ... ok
+test_shift_time_offsets_trajectories (test_receding_horizon.TestRecedingHorizon) ... ok
+test_overtake_penalized_when_player_has_row (test_right_of_way.TestRightOfWay) ... ok
+test_row_penalty_positive_for_left_overtake_straight (test_right_of_way.TestRightOfWay) ... ok
+test_scenario1_both_left_turn_equal_priority (test_right_of_way.TestRightOfWay) ... ok
+test_scenario4_maneuver_classification (test_right_of_way.TestRightOfWay) ... ok
+test_scenario4_prefers_yield_over_overtake (test_right_of_way.TestRightOfWay) ... ok
+test_audit_separates_boundary_artifacts_from_interior_traffic (test_search_showcase.TestSearchShowcase) ... ok
+test_dashboard_can_toggle_current_tree_and_inspect_node (test_search_showcase.TestSearchShowcase) ... ok
+test_filter_counts_are_actual_trial_counts (test_search_showcase.TestSearchShowcase) ... ok
+test_gap_requires_whole_ego_occupancy_before_next_vehicle (test_search_showcase.TestSearchShowcase) ... ok
+test_gif_export_has_multiple_frames_and_final_hold (test_search_showcase.TestSearchShowcase) ... ok
+test_layout_centers_parent_over_children (test_search_showcase.TestSearchShowcase) ... ok
+test_replay_never_uses_final_visits_at_first_sampling (test_search_showcase.TestSearchShowcase) ... ok
+test_safe_clean_rejects_parent_and_symlink (test_search_showcase.TestSearchShowcase) ... ok
+test_snapshot_attachment_does_not_change_point_tags (test_search_showcase.TestSearchShowcase) ... ok
+test_tree_snapshot_is_detached_and_serializable (test_search_showcase.TestSearchShowcase) ... ok
+test_agent_poses_use_distinct_trajectories_scenario4 (test_sim_replay.TestSimReplay) ... ok
+test_pad_to_duration_extends_beyond_planning_horizon (test_sim_replay.TestSimReplay) ... ok
+test_all_scenarios_finish_with_current_time_nominal_predictions (test_trajectory_safety.TestClosedLoopValidation) ... ok
+test_dynamic_environment_uses_same_timestamp (test_trajectory_safety.TestTrajectorySafety) ... ok
+test_impossible_initial_overlap_is_explicitly_unsafe (test_trajectory_safety.TestTrajectorySafety) ... ok
+test_intermediate_collision_not_hidden_by_coarse_grid (test_trajectory_safety.TestTrajectorySafety) ... ok
+test_interpolation_uses_shortest_heading (test_trajectory_safety.TestTrajectorySafety) ... ok
+test_replan_visualization_uses_executed_pose_over_game_hypothesis (test_trajectory_safety.TestTrajectorySafety) ... ok
+test_rollout_accumulates_all_game_costs (test_trajectory_safety.TestTrajectorySafety) ... ok
+test_scenario2_output_passes_game_and_nominal_for_five_seeds (test_trajectory_safety.TestTrajectorySafety) ... ok
+unittest.case.FunctionTestCase (test_write_debug_report)
+test_debug_report.test_write_debug_report ... ok
+unittest.case.FunctionTestCase (test_best_path_node_times_monotonic_scenario2)
+test_node_time_monotonic.test_best_path_node_times_monotonic_scenario2 ... ok
+unittest.case.FunctionTestCase (test_ego_trajectory_spatial_continuity_scenario2)
+test_node_time_monotonic.test_ego_trajectory_spatial_continuity_scenario2 ... ok
+unittest.case.FunctionTestCase (test_nested_expand_ego_state_spatially_continuous_on_best_path)
+test_node_time_monotonic.test_nested_expand_ego_state_spatially_continuous_on_best_path ... ok
+unittest.case.FunctionTestCase (test_semantic_annotations_time_order_scenario2)
+test_node_time_monotonic.test_semantic_annotations_time_order_scenario2 ... ok
+unittest.case.FunctionTestCase (test_find_player_at_offset_matches_predict_traj_at)
+test_predict_time_alignment.test_find_player_at_offset_matches_predict_traj_at ... ok
+unittest.case.FunctionTestCase (test_game_at_start_time_3_differs_from_time_0)
+test_predict_time_alignment.test_game_at_start_time_3_differs_from_time_0 ... ok
+unittest.case.FunctionTestCase (test_play_game_player_start_uses_absolute_time)
+test_predict_time_alignment.test_play_game_player_start_uses_absolute_time ... ok
+unittest.case.FunctionTestCase (test_best_path_opponents_are_subsequence_of_initial_cipvs)
+test_sequential_expand.test_best_path_opponents_are_subsequence_of_initial_cipvs ... ok
+unittest.case.FunctionTestCase (test_find_game_pairs_single_opponent_scenario2)
+test_sequential_expand.test_find_game_pairs_single_opponent_scenario2 ... ok
+unittest.case.FunctionTestCase (test_first_expansion_event_single_opponent)
+test_sequential_expand.test_first_expansion_event_single_opponent ... ok
+unittest.case.FunctionTestCase (test_root_expand_first_opponent_is_vehicle_scenario2)
+test_sequential_expand.test_root_expand_first_opponent_is_vehicle_scenario2 ... ok
+
+----------------------------------------------------------------------
+Ran 116 tests in 37.821s
+
+OK
