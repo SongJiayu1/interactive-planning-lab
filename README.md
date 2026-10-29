@@ -27,6 +27,11 @@ This repo is a **showcase**, not a third copy of the algorithms — short GIFs, 
 
 Default setup: dual-lane road, left lane change, Frenet planning on a reference path, Cartesian display. Output: ~8 s coarse trajectory (`dt = 0.5 s`) + semantic schedule + single sticky `gap_id`.
 
+
+Refreshed 2026-10-29: all C1–C10 recordings use the synchronized **decision evidence dashboard**: current-cycle tree, root N/Q, reconstructed costs, masked actions with reasons, current plan and executed history. Final raw WAIT can mean target-lane HOLD after a completed merge.
+
+**Measured limits:** C3 and C10 reach the target lane but subsequently overlap with scripted followers (13 and 9 samples on a 0.1s interpolated OBB grid). They are diagnostics, not whole-run safe successes. C4 has scripted non-ego overlaps; C7 uses an injected blocking hook. Start with C9 for ALIGN/commit behavior, then C7 for abort handling. See the [fresh run index and audit](assets/InteractMCTS_review/README.md).
+
 ### Casebook definitions (C1–C10)
 
 | Case | Name | Setup / intent | Expected behavior |
@@ -52,7 +57,7 @@ Default setup: dual-lane road, left lane change, Frenet planning on a reference 
 
 ![C2](assets/InteractMCTS_lane_change/C2_closed_loop.gif)
 
-#### C3 — follow always keep
+#### C3 — follow always keep (diagnostic: later ego overlap)
 
 ![C3](assets/InteractMCTS_lane_change/C3_closed_loop.gif)
 
@@ -80,7 +85,7 @@ Default setup: dual-lane road, left lane change, Frenet planning on a reference 
 
 ![C9](assets/InteractMCTS_lane_change/C9_closed_loop.gif)
 
-#### C10 — no same-lane lead, decelerate into gap
+#### C10 — decelerate into gap (diagnostic: later ego overlap)
 
 ![C10](assets/InteractMCTS_lane_change/C10_closed_loop.gif)
 
@@ -102,6 +107,11 @@ Default setup: dual-lane road, left lane change, Frenet planning on a reference 
 **Semantic MCTS for unprotected left:** conflict-zone geometry → opposing **time** gaps + sticky gap* → `WAIT` / `CREEP` / `GO` → GO hard gate (VRU stub + keep∧block) → closed-loop U7 (replan every 0.5 s).
 
 Default setup: PairMCTS-style 4-way cross; ego left-turn ref × opposing southbound; fixed intersection camera. Output: rolling 0.5 s decisions under perfect control over ~20 s.
+
+
+Refreshed 2026-10-29: all L1–L8 recordings include the **current-cycle tree, actual GO gate rejection reasons, cached keep/block occupancy windows and estimated CV gap**. Search Q is an average total cost; the selected reconstructed trajectory cost is shown separately. Snapshots are end-of-cycle search results, not iteration replays.
+
+**Measured limits:** L8 passes the whole-occupancy mid-gap test with 0.4s margins on both sides under the prototype interval model. L5 selects the mid-gap but does not thread it. L4/L5 have late scripted-actor overlaps at the finite reference endpoint. These are perfect-tracking prototype experiments, not proof of superiority over Europa or a continuous safety certificate. See the [fresh run index and audit](assets/InteractMCTS_review/README.md).
 
 ### Casebook definitions (L1–L8)
 
@@ -134,7 +144,7 @@ Default setup: PairMCTS-style 4-way cross; ego left-turn ref × opposing southbo
 
 ![L4](assets/InteractMCTS_ult/L4_closed_loop.gif)
 
-#### L5 — sticky mid-gap selection
+#### L5 — sticky mid-gap selection (not threaded in this run)
 
 ![L5](assets/InteractMCTS_ult/L5_closed_loop.gif)
 

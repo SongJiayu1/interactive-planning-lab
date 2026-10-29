@@ -1,0 +1,105 @@
+unittest.case.FunctionTestCase (test_deterministic)
+test_conflict_zone.test_deterministic ... ok
+unittest.case.FunctionTestCase (test_orthogonal_cross_center_near_origin)
+test_conflict_zone.test_orthogonal_cross_center_near_origin ... ok
+unittest.case.FunctionTestCase (test_parallel_far_is_none)
+test_conflict_zone.test_parallel_far_is_none ... ok
+unittest.case.FunctionTestCase (test_ult_l0_t_junction_near_plaza)
+test_conflict_zone.test_ult_l0_t_junction_near_plaza ... ok
+unittest.case.FunctionTestCase (test_ult_l1_left_turn_vs_southbound)
+test_conflict_zone.test_ult_l1_left_turn_vs_southbound ... ok
+unittest.case.FunctionTestCase (test_box_audit_respects_orientation_and_separation)
+test_decision_evidence.test_box_audit_respects_orientation_and_separation ... ok
+unittest.case.FunctionTestCase (test_complete_window_with_margin_succeeds)
+test_decision_evidence.test_complete_window_with_margin_succeeds ... ok
+unittest.case.FunctionTestCase (test_dashboard_does_not_replan_and_shows_gate_rejection)
+test_decision_evidence.test_dashboard_does_not_replan_and_shows_gate_rejection ... ok
+unittest.case.FunctionTestCase (test_entry_without_clearance_is_not_success)
+test_decision_evidence.test_entry_without_clearance_is_not_success ... ok
+unittest.case.FunctionTestCase (test_final_wait_is_not_lane_change_failure)
+test_decision_evidence.test_final_wait_is_not_lane_change_failure ... ok
+unittest.case.FunctionTestCase (test_go_probe_is_actual_config_and_serializable)
+test_decision_evidence.test_go_probe_is_actual_config_and_serializable ... ok
+unittest.case.FunctionTestCase (test_interpolated_audit_catches_collision_between_safe_endpoints)
+test_decision_evidence.test_interpolated_audit_catches_collision_between_safe_endpoints ... ok
+unittest.case.FunctionTestCase (test_lane_change_mask_explains_all_filtered_commit_styles)
+test_decision_evidence.test_lane_change_mask_explains_all_filtered_commit_styles ... ok
+unittest.case.FunctionTestCase (test_masked_go_has_reason_and_no_fabricated_visits)
+test_decision_evidence.test_masked_go_has_reason_and_no_fabricated_visits ... ok
+unittest.case.FunctionTestCase (test_selected_cost_is_reconstructed_not_root_average)
+test_decision_evidence.test_selected_cost_is_reconstructed_not_root_average ... ok
+unittest.case.FunctionTestCase (test_single_safe_frame_is_not_whole_gap_success)
+test_decision_evidence.test_single_safe_frame_is_not_whole_gap_success ... ok
+unittest.case.FunctionTestCase (test_all_cases_build)
+test_time_gaps.test_all_cases_build ... ok
+unittest.case.FunctionTestCase (test_l1_has_wide_front_gap)
+test_time_gaps.test_l1_has_wide_front_gap ... ok
+unittest.case.FunctionTestCase (test_l2_tta_near_zero)
+test_time_gaps.test_l2_tta_near_zero ... ok
+unittest.case.FunctionTestCase (test_l3_cleared)
+test_time_gaps.test_l3_cleared ... ok
+unittest.case.FunctionTestCase (test_l4_has_narrow_mid_gap)
+test_time_gaps.test_l4_has_narrow_mid_gap ... ok
+unittest.case.FunctionTestCase (test_l5_late_prefers_behind_active_opp)
+test_time_gaps.test_l5_late_prefers_behind_active_opp ... ok
+unittest.case.FunctionTestCase (test_l5_prefers_mid_insert_gap)
+test_time_gaps.test_l5_prefers_mid_insert_gap ... ok
+unittest.case.FunctionTestCase (test_l5_sticky_holds_mid_gap)
+test_time_gaps.test_l5_sticky_holds_mid_gap ... ok
+unittest.case.FunctionTestCase (test_l8_prefers_wide_mid_gap)
+test_time_gaps.test_l8_prefers_wide_mid_gap ... ok
+unittest.case.FunctionTestCase (test_l1_closed_loop_reaches_conflict)
+test_ult_closed_loop.test_l1_closed_loop_reaches_conflict ... ok
+unittest.case.FunctionTestCase (test_l2_closed_loop_no_go)
+test_ult_closed_loop.test_l2_closed_loop_no_go ... ok
+unittest.case.FunctionTestCase (test_l7_rush_defers_late_go)
+test_ult_closed_loop.test_l7_rush_defers_late_go ... ok
+unittest.case.FunctionTestCase (test_l8_threads_mid_gap)
+test_ult_closed_loop.test_l8_threads_mid_gap ... ok
+unittest.case.FunctionTestCase (test_creep_never_enters_disk_from_stop)
+test_ult_grounding.test_creep_never_enters_disk_from_stop ... ok
+unittest.case.FunctionTestCase (test_creep_stops_at_observe)
+test_ult_grounding.test_creep_stops_at_observe ... ok
+unittest.case.FunctionTestCase (test_go_crosses_conflict)
+test_ult_grounding.test_go_crosses_conflict ... ok
+unittest.case.FunctionTestCase (test_ground_ult_dispatch)
+test_ult_grounding.test_ground_ult_dispatch ... ok
+unittest.case.FunctionTestCase (test_l1_ego_five_m_before_stop)
+test_ult_grounding.test_l1_ego_five_m_before_stop ... ok
+unittest.case.FunctionTestCase (test_observe_before_enter)
+test_ult_grounding.test_observe_before_enter ... ok
+unittest.case.FunctionTestCase (test_s_cap_definitions)
+test_ult_grounding.test_s_cap_definitions ... ok
+unittest.case.FunctionTestCase (test_wait_holds_outside)
+test_ult_grounding.test_wait_holds_outside ... ok
+unittest.case.FunctionTestCase (test_ego_go_occupies_conflict)
+test_ult_hard_gate.test_ego_go_occupies_conflict ... ok
+unittest.case.FunctionTestCase (test_l1_go_legal)
+test_ult_hard_gate.test_l1_go_legal ... ok
+unittest.case.FunctionTestCase (test_l2_go_illegal)
+test_ult_hard_gate.test_l2_go_illegal ... ok
+unittest.case.FunctionTestCase (test_occupancy_overlap_margin)
+test_ult_hard_gate.test_occupancy_overlap_margin ... ok
+unittest.case.FunctionTestCase (test_vru_stub_forbids_go)
+test_ult_hard_gate.test_vru_stub_forbids_go ... ok
+unittest.case.FunctionTestCase (test_yield_does_not_rescue_block)
+test_ult_hard_gate.test_yield_does_not_rescue_block ... ok
+unittest.case.FunctionTestCase (test_default_policy_prefers_creep_when_room)
+test_ult_macro_mcts.test_default_policy_prefers_creep_when_room ... ok
+unittest.case.FunctionTestCase (test_l1_selects_go)
+test_ult_macro_mcts.test_l1_selects_go ... ok
+unittest.case.FunctionTestCase (test_l2_defers_go)
+test_ult_macro_mcts.test_l2_defers_go ... ok
+unittest.case.FunctionTestCase (test_l6_prefers_creep)
+test_ult_macro_mcts.test_l6_prefers_creep ... ok
+unittest.case.FunctionTestCase (test_behavior_table_format)
+test_ult_regression.test_behavior_table_format ... ok
+unittest.case.FunctionTestCase (test_expect_covers_casebook)
+test_ult_regression.test_expect_covers_casebook ... ok
+unittest.case.FunctionTestCase (test_l8_regression_row_pass)
+test_ult_regression.test_l8_regression_row_pass ... ok
+
+----------------------------------------------------------------------
+Ran 50 tests in 10.306s
+
+OK

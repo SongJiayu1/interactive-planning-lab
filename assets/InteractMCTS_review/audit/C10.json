@@ -1,0 +1,28 @@
+{
+  "target_reached": true,
+  "final_in_target": true,
+  "abort_selected": false,
+  "abort_infeasible_cycles": 0,
+  "raw_macro_counts": {
+    "ALIGN": 5,
+    "WAIT": 26,
+    "COMMIT_INSERT_FRONT": 1,
+    "CONTINUE_COMMIT": 8
+  },
+  "regression": "existing per-case assertions passed (where defined)",
+  "sample_dt_s": 0.1,
+  "pair_overlap_samples": {
+    "ego|left_follow": 9
+  },
+  "first_overlap_s": {
+    "ego|left_follow": 14.0
+  },
+  "ego_overlap_samples": 9,
+  "scope": "interpolated recorded OBB poses; not continuous collision proof",
+  "sampled_safety_check": "FAIL_EGO_OVERLAP",
+  "last_raw_macro": "WAIT",
+  "case": "C10",
+  "n_iter": 20,
+  "case_execution_wall_s": 1.796,
+  "timing_scope": "whole case incl setup and audit, not planner latency"
+}

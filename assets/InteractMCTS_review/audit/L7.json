@@ -1,0 +1,32 @@
+{
+  "entered": true,
+  "cleared": true,
+  "ego_enter_s": 4.0872933884297495,
+  "ego_clear_s": 6.103499999999999,
+  "first_go_s": 2.0,
+  "raw_macro_counts": {
+    "CREEP": 3,
+    "WAIT": 1,
+    "GO": 36
+  },
+  "root_go_masked_cycles": 4,
+  "initial_gap_id": "front_of_opp_1",
+  "whole_gap_threaded": false,
+  "gap_open_s": 3.636363636363636,
+  "gap_close_s": null,
+  "gap_close_right_censored": false,
+  "required_margin_s": 0.4,
+  "measurement": "linear s interpolation; prototype centre/conflict intervals",
+  "regression": "PASS",
+  "sample_dt_s": 0.1,
+  "pair_overlap_samples": {},
+  "first_overlap_s": {},
+  "ego_overlap_samples": 0,
+  "scope": "interpolated recorded OBB poses; not continuous collision proof",
+  "sampled_safety_check": "NO_EGO_OVERLAP_OBSERVED",
+  "last_raw_macro": "GO",
+  "case": "L7",
+  "n_iter": 24,
+  "case_execution_wall_s": 2.793,
+  "timing_scope": "whole case incl setup and audit, not planner latency"
+}

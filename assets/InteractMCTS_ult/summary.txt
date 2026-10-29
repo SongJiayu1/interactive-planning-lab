@@ -1,10 +1,10 @@
-id    check   expect                                actual
-------------------------------------------------------------------------------------------------
-L1    PASS    GO, enter CZ                          m0=GO first_go=0 s_max=39.8 gap0=front_of_opp_1
-L2    PASS    yield until opp clears CZ             m0=WAIT first_go=19 s_max=39.8 gap0=behind_opp_1
-L3    PASS    GO, enter CZ                          m0=GO first_go=0 s_max=39.8 gap0=open
-L4    INFO    narrow mid-gap (observe)              m0=CREEP first_go=2 s_max=39.8 gap0=behind_opp_2
-L5    PASS    sticky mid-gap opp_1__opp_2 at t=0    m0=CREEP first_go=10 s_max=39.8 gap0=opp_1__opp_2 thread=False
-L6    PASS    yield until opp clears CZ             m0=CREEP first_go=19 s_max=39.8 gap0=behind_opp_1
-L7    PASS    delayed GO, then finish left turn     m0=CREEP first_go=4 s_max=39.8 gap0=front_of_opp_1
-L8    PASS    thread between opp_1 and opp_2        m0=GO first_go=0 s_max=39.8 gap0=opp_1__opp_2 thread=True
+Fresh ULT run: 2026-10-29; 20s, dt=0.5s, 24 iterations/cycle.
+L1: cleared=True first_GO=0.0s whole_mid_gap=False ego_overlap_samples=0
+L2: cleared=True first_GO=9.5s whole_mid_gap=False ego_overlap_samples=0
+L3: cleared=True first_GO=0.0s whole_mid_gap=False ego_overlap_samples=0
+L4: cleared=True first_GO=1.0s whole_mid_gap=False ego_overlap_samples=0
+L5: cleared=True first_GO=5.0s whole_mid_gap=False ego_overlap_samples=0
+L6: cleared=True first_GO=9.5s whole_mid_gap=False ego_overlap_samples=0
+L7: cleared=True first_GO=2.0s whole_mid_gap=False ego_overlap_samples=0
+L8: cleared=True first_GO=0.0s whole_mid_gap=True ego_overlap_samples=0
+Interval-model and sampled checks only. See ../InteractMCTS_review/README.md for limits and complete audits.
